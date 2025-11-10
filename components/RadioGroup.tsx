@@ -6,9 +6,11 @@ interface RadioGroupProps {
   options: Option[];
   selectedValue: string;
   onChange: (value: string) => void;
+  // NEW: Add disabled prop to the interface
+  disabled?: boolean;
 }
 
-const RadioGroup: React.FC<RadioGroupProps> = ({ name, options, selectedValue, onChange }) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({ name, options, selectedValue, onChange, disabled }) => {
   return (
     <div className="flex flex-wrap gap-3">
       {options.map(option => (
@@ -20,6 +22,8 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ name, options, selectedValue, o
             checked={selectedValue === option.value}
             onChange={() => onChange(option.value)}
             className="h-5 w-5 border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-teal-600 focus:ring-teal-500"
+            // NEW: Pass the disabled prop to the input element
+            disabled={disabled}
           />
           <span className="text-slate-700 dark:text-slate-300">{option.label}</span>
         </label>

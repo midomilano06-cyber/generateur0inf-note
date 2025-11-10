@@ -282,7 +282,8 @@ const ZplGenerator: React.FC<ZplGeneratorProps> = ({ noteContent, theme, isDisab
                 placeholder="Entrez votre note ici..."
                 rows={4}
                 aria-label="Note for ZPL Label"
-                disabled={isEffectivelyDisabled}
+                // FIX: Explicitly cast to boolean, though 'isEffectivelyDisabled' should already be boolean
+                disabled={!!isEffectivelyDisabled}
             />
         </div>
 
